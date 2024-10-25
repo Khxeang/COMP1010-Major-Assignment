@@ -1,6 +1,6 @@
 # COMP1010-Major-Assignment
-Bachelor Of IT Majoring In Software Tech
-COMP1010 Fundamentals of Computer Science
+Bachelor Of IT Majoring In Software Tech |
+COMP1010 Fundamentals of Computer Science |
 MCU Arena Text-Based Fighting Game With Marvel Characters
 
 ## Description:
