@@ -4,7 +4,7 @@ COMP1010 Fundamentals of Computer Science |
 MCU Arena Text-Based Fighting Game With Marvel Characters
 
 ## Description:
-This is a text-based fighting game that revolves around the Marvel Cinematic Universe characters, including the franchise characters and villains, they will have their items and abilities. The characters will be split into 2 teams: the heroes and the villains. But we will have 3 different types of characters, the heroes, the anti-heroes, and the villains, the only twist here is that Anti-heroes can be both on the heroes team or the villain team.
+This is a text-based fighting game that revolves around the Marvel Cinematic Universe characters, including the franchise characters and villains, they will have their items and abilities. The characters will be split into 2 teams: the heroes and the villains. But we will have 3 different types of characters, the Heroes, the Anti-Heroes, and the Villains, the only twist here is that Anti-heroes can be both on the Heroes team or the Villain team.
 
 ## How The Game Works:
 This game will start with a main menu that has 2 options. The user can pick between Play and Quit. Picking quit will terminate the program. Picking Play will direct the user to another menu that has more options to pick from. In order to start the game the user will have to pick to join between the 2 teams, they can either join the Heroes Team or the Villian Team, but before they pick any of these 2 options they have another option to inspect the teams "View Teams". This will show the user the team lists and the characters. Once the user picks the team they want to be in they can pick 3 characters from the list to be on their team.
