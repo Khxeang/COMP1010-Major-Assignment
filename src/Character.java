@@ -8,6 +8,8 @@ public class Character {
     int itemDamage; //Damage dealt by character's items.
     int UltimateDamage; //Damage dealt by character's ultimate attacks.
 
+    public int ultimateCooldown = 3;
+    public int ultimateCooldownTimer = 0;
 
     // Constructor for character initialization
     public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage) {
@@ -25,8 +27,25 @@ public class Character {
     public void attack(Character target) {
         int damage = DetermineDamage(); //Call a function that calculate the attack damage.
         target.TakeDamage(damage); //Inflict damage upon the target.
-        System.out.println(this.name + " attacked " + target.getName() + " and dealt " + damage + " damage!"); //Make announcement of the attack.
+        System.out.println(this.name + "attacked" + target.getName() + "and dealt" + damage + "damage!"); //Make announcement of the attack.
     }
+
+    //method to use the ultimate ability
+    public void useUltimate(Character target){
+        if(ultimateCooldownTimer == 0){
+            target.TakeDamage(UltimateDamage);
+            System.out.println(this.name + "used their ultimate on" + target.getName()+ "and dealth" + UltimateDamage + "damage!");
+            ultimateCooldownTimer = ultimateCooldown;
+        } else {
+            System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");
+            }
+        }
+        public void reduceCooldown() {
+            if (ultimateCooldownTimer > 0) {
+                ultimateCooldownTimer--;
+            }
+        }
+        //item needs to go here
 
     //Function that determine the damage based on character's passive attack range.
     private int DetermineDamage(){
@@ -43,14 +62,11 @@ public class Character {
         return this.health > 0;
     }
 
-    //Functions to retrieve the name, type, health, defense, attack, item damage, and ultimate damage of the character.
+    //Functions to retrieve the name, health, and the defense points of the character.
     public String getName(){
         return name;
     }
 
-    public String getType(){
-        return type;
-    }
 
     public int getHealth(){
         return health;
@@ -59,18 +75,4 @@ public class Character {
     public int getDefense(){
         return defense;
     }
-
-    public int getAttack(){
-        return passiveMinDamage;
-    }
-
-    public int getItem(){
-        return itemDamage;
-    }
-
-    public int getUltimate(){
-        return UltimateDamage;
-    }
-
-
 }
