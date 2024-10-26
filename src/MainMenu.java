@@ -7,6 +7,11 @@ public class MainMenu {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game(); // Initialize the Game class to handle game setup and gameplay
 
+        System.out.println("======================================");
+        System.out.println("            MCU Arena                ");
+        System.out.println("======================================");
+
+
         while (true) {
             System.out.println("\n==== Main Menu ====");
             System.out.println("1. Play");
