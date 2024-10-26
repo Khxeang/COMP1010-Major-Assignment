@@ -12,16 +12,17 @@ public class MainMenu {
             System.out.println("1. Play");
             System.out.println("2. Quit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
+            
+            String userInput = scanner.nextLine();
 
-            if (choice == 2) {
+           if (userInput.equalsIgnoreCase("Quit") || userInput.equalsIgnoreCase("2")) {
                 System.out.println("Thanks for playing!");
                 break;
-            } else if (choice == 1) {
-                game.startGame(); // Begin the game when "Play" is selected
-            } else {
-                System.out.println("Invalid choice! Please try again."); // Handle invalid input
-            }
+           } else if (userInput.equalsIgnoreCase("Play") || userInput.equalsIgnoreCase("1")){
+                game.StartGame();
+           } else {
+                System.out.println("Invalid choice! Please try again.");
+           }
         }
     }
 }
