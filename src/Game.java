@@ -129,6 +129,19 @@ public class Game {
 
                 System.out.println("\n" + PlayerCharacter.getName() + " (Player) VS " + OpponentCharacter.getName() + " (Opponent)");
 
+                //check if ultimate can be used
+                if(PlayerCharacter.ultimateCooldownTimer == 0){
+                    PlayerCharacter.useUltimate(OpponentCharacter); // use ultimate
+                    PlayerCharacter.ultimateCooldownTimer = PlayerCharacter.ultimateCooldown; //reset cooldown after use
+                } else {
+                    //use basic attack
+                    PlayerCharacter.attack(OpponentCharacter);
+                    PlayerCharacter.
+                }
+
+
+
+
                 PlayerCharacter.attack(OpponentCharacter);
                 if(!OpponentCharacter.isAlive()){
                     System.out.println((OpponentCharacter.getName() + " has been defeated!"));
