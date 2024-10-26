@@ -1,5 +1,6 @@
 public class Character {
     String name; //Name of the character.
+    String type; //Character type (Hero, Villian, Anti-Hero)
     int health; //Character's health points.
     int defense; //Character's defense points.
     int passiveMinDamage; //Character's minimum passive damage. 
@@ -11,6 +12,7 @@ public class Character {
     // Constructor for character initialization
     public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage) {
         this.name = name;
+        this.type = type;
         this.health = health;
         this.defense = defense;
         this.passiveMinDamage = passiveMinDamage;
@@ -23,7 +25,7 @@ public class Character {
     public void attack(Character target) {
         int damage = DetermineDamage(); //Call a function that calculate the attack damage.
         target.TakeDamage(damage); //Inflict damage upon the target.
-        System.out.println(this.name + "attacked" + target.getName() + "and dealt" + damage + "damage!"); //Make announcement of the attack.
+        System.out.println(this.name + " attacked " + target.getName() + " and dealt " + damage + " damage!"); //Make announcement of the attack.
     }
 
     //Function that determine the damage based on character's passive attack range.
@@ -41,11 +43,14 @@ public class Character {
         return this.health > 0;
     }
 
-    //Functions to retrieve the name, health, and the defense points of the character.
+    //Functions to retrieve the name, type, health, defense, attack, item damage, and ultimate damage of the character.
     public String getName(){
         return name;
     }
 
+    public String getType(){
+        return type;
+    }
 
     public int getHealth(){
         return health;
@@ -54,4 +59,18 @@ public class Character {
     public int getDefense(){
         return defense;
     }
+
+    public int getAttack(){
+        return passiveMinDamage;
+    }
+
+    public int getItem(){
+        return itemDamage;
+    }
+
+    public int getUltimate(){
+        return UltimateDamage;
+    }
+
+
 }

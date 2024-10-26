@@ -5,13 +5,13 @@ import java.util.Random; //Importing random to help randomize character selectio
 
 //Creating class to manage the team of characters ()
 public class Team {
-    private String name; // Name of the Team (Heroes or Villians).
-    private ArrayList<Character> characters; //Make an array that stores characters in the team.
+    public String Teamname; // Name of the Team (Heroes or Villians).
+    public ArrayList<Character> characters; //Make an array that stores characters in the team.
 
 
     //Constructor for initializing the team.
     public Team(String name){
-        this.name = name; //Assigning name to the team.
+        this.Teamname = name; //Assigning name to the team.
         this.characters = new ArrayList<>(); //Initializing the list of characters.
     }
 
@@ -29,5 +29,18 @@ public class Team {
         return characters.get(rand.nextInt(characters.size())); //Return a random character from the team.
     }
 
+    //Function to display team details
+    public void displayTeam(){
+        System.out.println("\n" + Teamname);
+        for(Character character : characters){
+            System.out.println("\n" + character.getName() + " (" + character.getType() + ") \n - Health: " + character.getHealth() + "\n - Defense: " + character.getDefense() + "\n - Attack: " + character.getAttack() + "\n - Item Damage: " + character.getItem() + "\n - Ultimate Damage: " + character.getUltimate());
+        }
+    }
 
-}
+    public String getTeamname(){
+        return Teamname;
+    }
+
+    
+
+} 
