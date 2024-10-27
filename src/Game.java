@@ -12,6 +12,10 @@ public class Game {
     public Team selectedTeam; //This will keep track of the team that the user have selected.
     public Scanner scanner;
 
+    private int totalRounds = 3; //rounds to win the game
+    private int currentRounds = 0; //track current rounds
+    private int playerWins = 0;// track players total wins
+
 
     //Constructor for the Game class
     public Game(){

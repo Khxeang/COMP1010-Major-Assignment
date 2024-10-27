@@ -25,6 +25,7 @@ public class Character {
     // Constructor for character initialization
     public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage, String ultimateAttackName,Item Item) {
         this.name = name;
+        this.type = type;
         this.health = health;
         this.defense = defense;
         this.passiveMinDamage = passiveMinDamage;
@@ -127,6 +128,9 @@ public class Character {
         return name;
     }
 
+    public String getType(){
+        return type;
+    }
 
     public int getHealth(){
         return health;
@@ -135,4 +139,16 @@ public class Character {
     public int getDefense(){
         return defense;
     }
+
+    public int getAttack(){
+        return baseAttack;
+    }
+    public int getUltimate() {
+        return ultimateDamage;
+    }
+
+    public int getItem() {
+        return itemDamage;
+    }
+
 }
