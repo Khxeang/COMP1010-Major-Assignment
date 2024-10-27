@@ -142,30 +142,25 @@ public class Game {
 
                 System.out.println("\n" + PlayerCharacter.getName() + " (Player) VS " + OpponentCharacter.getName() + " (Opponent)");
 
-
-                // new choice code
-
-
-
-                //check if ultimate can be used
-                if(PlayerCharacter.ultimateCooldownTimer == 0){
-                    PlayerCharacter.useUltimate(OpponentCharacter); // use ultimate
-                    PlayerCharacter.ultimateCooldownTimer = PlayerCharacter.ultimateCooldown; //reset cooldown after use
-                } else {
-                    //use basic attack
-                    PlayerCharacter.attack(OpponentCharacter);
-                    PlayerCharacter.ultimateCooldownTimer--;//reduce cooldown
-                }
-                //check if oppenent character is defeated
-                if(!OpponentCharacter.isAlive()){
-                    System.out.println(OpponentCharacter.getName() + " has been defeated!");
-                } else {
-                    // Opponent attacks back if still alive
-                    OpponentCharacter.attack(PlayerCharacter);
-                    if (!PlayerCharacter.isAlive()) {
-                        System.out.println(PlayerCharacter.getName() + " has been defeated!");
+                /// Check if ultimate ability is ready to use
+                if (PlayerCharacter.ultimateCooldownTimer == 0) {
+                    PlayerCharacter.useUltimate(OpponentCharacter); // Use ultimate ability
+                    PlayerCharacter.ultimateCooldownTimer = PlayerCharacter.ultimateCooldown; // Reset ultimate cooldown
+                    } else {// Use basic attack if no ultimate or item is available
+                        PlayerCharacter.attack(OpponentCharacter);
+                        PlayerCharacter.ultimateCooldownTimer--; // Reduce ultimate cooldown timer
+                        }
+                        
+                        // Check if the opponent character is defeated
+                        if (!OpponentCharacter.isAlive()) {
+                            System.out.println(OpponentCharacter.getName() + " has been defeated!");
+                        } else {
+                            // Opponent attacks back if still alive
+                            OpponentCharacter.attack(PlayerCharacter);
+                            if (!PlayerCharacter.isAlive()) {
+                                System.out.println(PlayerCharacter.getName() + " has been defeated!");
+                            }
+                        }
                     }
                 }
-                }
             }
-        }
