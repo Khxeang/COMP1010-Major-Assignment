@@ -12,12 +12,12 @@ public class MainMenu {
             System.out.println("1. Play");
             System.out.println("2. Quit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
+            String choice = scanner.nextLine()
 
-            if (choice == 2) {
+            if (choice.equalsIgnoreCase("Quit") || choice.equalsIgnoreCase("2")) {
                 System.out.println("Thanks for playing!");
                 break;
-            } else if (choice == 1) {
+            } else if (choice.equalsIgnoreCase("Play") || choice.equalsIgnoreCase("1")) {
                 game.StartGame();// Begin the game when "Play" is selected
             } else {
                 System.out.println("Invalid choice! Please try again."); // Handle invalid input
