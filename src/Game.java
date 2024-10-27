@@ -20,36 +20,36 @@ public class Game {
         this.AntiHeroes = new Team("Team Anti-Hero"); //Anti-Hero Team.
         this.scanner = new Scanner(System.in); //Scanner for user's input.
 
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item Mjolnir = new Item("Mjolnir", 0, 50);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
-        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item Satelite = new Item("Satelite beam attack", 50, 0);
+        Item VibraniumShield = new Item("Vibranium Shield", 0, 50);
+        Item nanoSuit = new Item("Nano suit", 50, 0);
+        Item stormbreakerMjolnir = new Item("Stormbreaker and Mjolnir", 0, 300);
+        Item dualPistols = new Item("Dual Pistols", 0, 125);
+        Item daggers = new Item("Summon Daggers", 0, 115);
+        Item crescentDarts = new Item("Crescent Darts", 0, 150);
+        Item magicStaff = new Item("Magic Staff", 0, 200);
+        Item infinityGauntlet = new Item("Infinity Gauntlet", 0, 200);
+        Item helmet = new Item("Helmet Power Channel", 0, 20); // Passive damage boost
+        Item aiRobots = new Item("AI Robots", 0, 150);
+        Item silverSurferAssists = new Item("Silver surfer attack", 0, 150);
 
         //Adding characters into the Hero Team.
-         Heroes.AddCharacter(new Heroes("Iron Man", 350, 300, 12, 18, 100, 150,hulkBuster ));
-         Heroes.AddCharacter(new Heroes("Captain America", 250, 250, 8, 15, 0, 250));
-         Heroes.AddCharacter(new Heroes("Spider-Man", 200, 100, 6, 10, 0, 200));
-         Heroes.AddCharacter(new Heroes("Thor", 500, 150, 15, 20, 300, 250));
+         Heroes.AddCharacter(new Heroes("Iron Man", 350, 300, 12, 18, 100, 150,"Arc Reactor",Satelite));
+         Heroes.AddCharacter(new Heroes("Captain America", 250, 250, 8, 15, 0, 250,"Mjolnir attack" , VibraniumShield));
+         Heroes.AddCharacter(new Heroes("Spider-Man", 200, 100, 6, 10, 0, 200,"nano suit Instant kill mode",nanoSuit));
+         Heroes.AddCharacter(new Heroes("Thor", 500, 150, 15, 20, 300, 250, "Odin's Power", stormbreakerMjolnir));
  
          //Adding characters into the Villian Team.
-         Villians.AddCharacter(new Villains("Thanos", 600, 300, 20, 25, 200, 400));
-         Villians.AddCharacter(new Villains("Magneto", 400, 300, 10, 15, 0, 300));
-         Villians.AddCharacter(new Villains("Ultron", 400, 300, 12, 18, 150, 350));
-         Villians.AddCharacter(new Villains("Galactus", 800, 50, 5, 10, 0, 400));
+         Villians.AddCharacter(new Villains("Thanos", 600, 300, 20, 25, 200, 400, "Infinity Gauntlet Blast", infinityGauntlet));
+         Villians.AddCharacter(new Villains("Magneto", 400, 300, 10, 15, 0, 300, "Item Disable", helmet));
+         Villians.AddCharacter(new Villains("Ultron", 400, 300, 12, 18, 150, 350, "Drone Swarm", aiRobots));
+         Villians.AddCharacter(new Villains("Galactus", 800, 50, 5, 10, 150, 400, "Planet Devourer's Grasp", silverSurferAssists));
  
          //Adding characters into the Anti-Hero Team.
-         AntiHeroes.AddCharacter(new AntiHeroes("Deadpool", 400, 50, 13, 20, 125, 300));
-         AntiHeroes.AddCharacter(new AntiHeroes("Loki", 450, 150, 14, 18, 115, 300));
-         AntiHeroes.AddCharacter(new AntiHeroes("MoonKnight", 400, 250, 16, 21, 150, 100));
-         AntiHeroes.AddCharacter(new AntiHeroes("Gambit", 200, 175, 12, 20, 200, 350));
+         AntiHeroes.AddCharacter(new AntiHeroes("Deadpool", 400, 50, 13, 20, 125, 300, "Resurrection Strike", dualPistols));
+         AntiHeroes.AddCharacter(new AntiHeroes("Loki", 450, 150, 14, 18, 115, 300, "Defense Confusion", daggers));
+         AntiHeroes.AddCharacter(new AntiHeroes("MoonKnight", 400, 250, 16, 21, 150, 100, "Full Moon Drain", crescentDarts));
+         AntiHeroes.AddCharacter(new AntiHeroes("Gambit", 200, 175, 12, 20, 200, 350, "Magic Card Strike", magicStaff));
 
     }
 
