@@ -2,6 +2,7 @@
 Bachelor Of IT Majoring In Software Tech |
 COMP1010 Fundamentals of Computer Science |
 MCU Arena Text-Based Fighting Game With Marvel Characters
+Github link: https://github.com/Khxeang/COMP1010-Major-Assignment
 
 ## Description:
 This is a text-based fighting game that revolves around the Marvel Cinematic Universe characters, including the franchise characters and villains, they will have their items and abilities. The characters will be split into 2 teams: the heroes and the villains. But we will have 3 different types of characters, the Heroes, the Anti-Heroes, and the Villains, the only twist here is that Anti-heroes can be both on the Heroes team or the Villain team.

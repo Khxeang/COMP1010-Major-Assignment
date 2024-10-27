@@ -78,7 +78,7 @@ public class Character {
     public void useItem(Character target){
         if(itemCooldownTimer == 0){
             target.TakeDamage(itemDamage);
-            System.out.println(this.name + " used " + this.itemAttackName + " on " + target.getName() + " and dealt " + itemDamage + " damage!");
+            System.out.println(this.name + " used an item on " + target.getName() + " and dealt " + itemDamage + " damage!");
             itemCooldownTimer = itemCooldown;
         } else {
             System.out.println(this.name + "'s item is on cooldown for " + itemCooldownTimer + " more turns.");
@@ -89,7 +89,7 @@ public class Character {
     public void useUltimate(Character target){
         if(ultimateCooldownTimer == 0){
             target.TakeDamage(UltimateDamage);
-            System.out.println(this.name + " used " + this.ultimateAttackName + " on " + target.getName() + " and dealt " + UltimateDamage + " damage!");
+            System.out.println(this.name + " used an ultimate on " + target.getName() + " and dealt " + UltimateDamage + " damage!");
             ultimateCooldownTimer = ultimateCooldown;
         } else {
             System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");
