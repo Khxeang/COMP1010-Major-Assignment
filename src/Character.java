@@ -9,8 +9,11 @@ public class Character {
     int passiveMaxDamage; //Character's maximum passive damage.
     int itemDamage; //Damage dealt by character's items.
     int UltimateDamage; //Damage dealt by character's ultimate attacks.
+    String itemAttackName;
     String ultimateAttackName; // Name of the ultimate attack
 
+    public int itemCooldown = 1;
+    public int itemCooldownTimer = 0;
     public int ultimateCooldown = 3;
     public int ultimateCooldownTimer = 0;
     private int level = 1;
@@ -71,11 +74,22 @@ public class Character {
         System.out.println(this.name + " attacked " + target.getName() + " and dealt " + damage + " damage!"); //Make announcement of the attack.
     }
 
-    //method to use the ultimate ability
+    //Method to use item
+    public void useItem(Character target){
+        if(itemCooldownTimer == 0){
+            target.TakeDamage(itemDamage);
+            System.out.println(this.name + " used " + this.itemAttackName + " on " + target.getName() + " and dealt " + itemDamage + " damage!");
+            itemCooldownTimer = itemCooldown;
+        } else {
+            System.out.println(this.name + "'s item is on cooldown for " + itemCooldownTimer + " more turns.");
+        }
+    }
+
+    //Method to use the ultimate ability
     public void useUltimate(Character target){
         if(ultimateCooldownTimer == 0){
             target.TakeDamage(UltimateDamage);
-            System.out.println(this.name + " used " + this.ultimateAttackName + " on " + target.getName()+ " and dealt " + UltimateDamage + "damage!");
+            System.out.println(this.name + " used " + this.ultimateAttackName + " on " + target.getName() + " and dealt " + UltimateDamage + " damage!");
             ultimateCooldownTimer = ultimateCooldown;
         } else {
             System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");

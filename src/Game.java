@@ -146,7 +146,114 @@ public class Game {
 
                 System.out.println("\n" + PlayerCharacter.getName() + " (Player) VS " + OpponentCharacter.getName() + " (Opponent)");
 
-                /// Check if ultimate ability is ready to use
+                //Loop until one of the characters is defated in the fight-off
+                while(PlayerCharacter.isAlive() && OpponentCharacter.isAlive()){
+                    //Displaying options to the user
+                    System.out.println("\nChoose an action:");
+                    System.out.println("1. Use Basic Attack");
+                    System.out.println("2. Use Item");
+                    System.out.println("3. Use Ultimate Attack");
+
+                    String choice =  scanner.nextLine().trim();
+
+
+                    if(choice.equalsIgnoreCase("Basic Attack") || choice.equalsIgnoreCase("1") || choice.equalsIgnoreCase("Use Basic Attack")){
+                        //Perform Basic Attack on the opponent
+                        PlayerCharacter.attack(OpponentCharacter);
+                        System.out.println(PlayerCharacter.getName() + " attacked " + OpponentCharacter.getName() + " with a basic attack ");
+                    } else if (choice.equalsIgnoreCase("Item") || choice.equalsIgnoreCase("Use Item") || choice.equalsIgnoreCase("2")){
+                        //Use item to attack if available
+                        if(PlayerCharacter.itemCooldownTimer == 0){
+                            PlayerCharacter.useItem(OpponentCharacter);
+                            PlayerCharacter.itemCooldownTimer = PlayerCharacter.itemCooldown; //Reset item cooldown
+                            System.out.println(PlayerCharacter.getName() + " used an item on " + OpponentCharacter.getName() + "!");
+                        } else{
+                            System.out.println("Item is on cooldown. Turns remaining: " + PlayerCharacter.itemCooldownTimer);
+                            continue;
+                    }
+ 
+                }                 
+                else {
+                    System.out.println("Invalid choice. Please select 1, 2, 3, or 4");
+                    continue; //Will keep the game running
+                }
+
+                // Check if opponent is defeated
+                if(!OpponentCharacter.isAlive()){
+                    System.out.println(OpponentCharacter.getName() + " has been defeated!");
+                    OpponentTeam.GetCharacterList().remove(OpponentCharacter); // Remove defeated characters
+                    if(OpponentTeam.GetCharacterList().size() > 0){
+                        OpponentCharacter = OpponentTeam.GetRandomCharacter(); // Get a new opponent to fight
+                    } else {
+                        break; //Exit if no opponent left
+                    }
+    
+                }
+
+                // Opponent's turn to attack if they are still alive
+                if(OpponentCharacter.isAlive()){
+                    //Randomize opponent's action between basic attack, item. or ultimate with the same cooldown logic)
+                    int OpponentChoice = random.nextInt(3);
+                    if(OpponentChoice == 0){
+                        OpponentCharacter.attack(PlayerCharacter);
+                        System.out.println(OpponentCharacter.getName() + " attacked " + PlayerCharacter.getName() + "with a baisc attack.");
+                    } else if(OpponentChoice == 1 && OpponentCharacter.itemCooldownTimer == 0){
+                        OpponentCharacter.useItem(PlayerCharacter);
+                        OpponentCharacter.itemCooldownTimer = OpponentCharacter.itemCooldown;
+                        System.out.println(OpponentCharacter.getName() + " used an item on " + PlayerCharacter.getName() + "!");
+                    } else if(OpponentChoice == 2 && OpponentCharacter.ultimateCooldownTimer == 0){
+                        OpponentCharacter.useUltimate(PlayerCharacter);
+                        OpponentCharacter.ultimateCooldownTimer = OpponentCharacter.ultimateCooldown;
+                        System.out.println(OpponentCharacter.getName() + " used their ultimate attack on " + PlayerCharacter.getName() + "!");
+                    } else{
+                        OpponentCharacter.attack(PlayerCharacter); //Default basic attack
+                        System.out.println(OpponentCharacter.getName() + " attacked " + PlayerCharacter.getName() + " with a basic attack.");
+                    }
+
+                }
+                //Check if the player's character is defeated
+                if(!PlayerCharacter.isAlive()){
+                    System.out.println(PlayerCharacter.getName() + " has been defeated!");
+                    PlayerTeam.remove(PlayerCharacter); //Removed defeated character from player's team
+                    if(PlayerTeam.size() > 0){
+                        PlayerCharacter = PlayerTeam.get(0); // Get the next available character
+                    } else {
+                        break;
+                    }
+
+                }
+
+                // Reduce cooldown timers at the end of each turn
+                if (PlayerCharacter.itemCooldownTimer > 0) {
+                    PlayerCharacter.itemCooldownTimer--;
+                }
+                if (PlayerCharacter.ultimateCooldownTimer > 0) {
+                    PlayerCharacter.ultimateCooldownTimer--;
+                }
+                if (OpponentCharacter.itemCooldownTimer > 0){
+                    OpponentCharacter.itemCooldownTimer--;
+                }
+                if(OpponentCharacter.ultimateCooldownTimer > 0){
+                    OpponentCharacter.ultimateCooldownTimer--;
+                }
+
+
+                if(PlayerTeam.size() == 0){
+                    System.out.println("Your team has been defeated!");
+                } else if(OpponentTeam.GetCharacterList().size() == 0){
+                    System.out.println("You defeated all characters in the opponent's team! Congrats!");
+                }
+
+                // Check if item is ready to use
+                if(PlayerCharacter.itemCooldownTimer == 0){
+                    PlayerCharacter.useItem(OpponentCharacter); // Use item
+                    PlayerCharacter.itemCooldownTimer = PlayerCharacter.itemCooldown; // Reset item cooldown
+                } else { // Use basic attack if no ultimate or item is available
+                    PlayerCharacter.attack(OpponentCharacter);
+                    PlayerCharacter.itemCooldownTimer--; // Reduce item cooldown timer
+                }
+
+                // Check if ultimate ability is ready to use
                 if (PlayerCharacter.ultimateCooldownTimer == 0) {
                     PlayerCharacter.useUltimate(OpponentCharacter); // Use ultimate ability
                     PlayerCharacter.ultimateCooldownTimer = PlayerCharacter.ultimateCooldown; // Reset ultimate cooldown
@@ -167,4 +274,5 @@ public class Game {
                         }
                     }
                 }
-            }
+        }
+    }
