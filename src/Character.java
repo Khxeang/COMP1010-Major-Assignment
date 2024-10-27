@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Character {
     String name; //Name of the character.
@@ -13,11 +13,18 @@ public class Character {
 
     public int ultimateCooldown = 3;
     public int ultimateCooldownTimer = 0;
+    private int level = 1;
+    private int xp = 0;
+    private int attacksMade = 0; // To track critical attacks
+    private static final int MAX_LEVEL = 50;
+    private static final int XP_PER_LEVEL = 10;
+    private int baseAttack = 10;
+    private int criticalAttack = 20;
+    private Random random = new Random(); // To randomize XP gained per attack
 
     // Constructor for character initialization
     public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage, String ultimateAttackName,Item Item) {
         this.name = name;
-        this.type = type;
         this.health = health;
         this.defense = defense;
         this.passiveMinDamage = passiveMinDamage;
@@ -39,8 +46,27 @@ public class Character {
 
     // Method to attack another character
     public void attack(Character target) {
-        int damage = DetermineDamage(); //Call a function that calculate the attack damage.
-        target.TakeDamage(damage); //Inflict damage upon the target.
+        boolean isCriticalHit = (attacksMade % 3 == 0) || Math.random() < 0.15; // Critical hit every third attack or with a 15% random chance
+    int damage = DetermineDamage(isCriticalHit); // Calculate damage based on critical or regular hit
+
+    // Inflict damage on the target
+    target.TakeDamage(damage);
+
+    // Gain a random amount of XP between 2 and 5 for each attack
+    int xpGained = 2 + (int)(Math.random() * 4);
+    gainXp(xpGained); // Update character's XP and check for level-up
+
+    // Display attack details
+    String hitType = isCriticalHit ? "critical" : "regular";
+    System.out.println(this.name + " attacked " + target.getName() + " with a " + hitType + " hit and dealt " + damage + " damage!");
+
+    // Check if the target is defeated and award extra XP if so
+    if (!target.isAlive()) {
+        gainXp(XP_PER_LEVEL); // Immediate level-up XP bonus on kill
+        System.out.println(target.getName() + " has been defeated by " + this.name + "!");
+    }
+
+    attacksMade++; // Track the number of attacks for critical hit logic
         System.out.println(this.name + "attacked" + target.getName() + "and dealt" + damage + "damage!"); //Make announcement of the attack.
     }
 
@@ -59,12 +85,31 @@ public class Character {
                 ultimateCooldownTimer--;
             }
         }
-        //item needs to go here
+
+        public void gainXp(int xpGained) {
+            if (level < MAX_LEVEL) {
+                this.xp += xpGained;
+                while (this.xp >= XP_PER_LEVEL && level < MAX_LEVEL) {
+                    levelUp();
+                    this.xp -= XP_PER_LEVEL; // Deduct XP for each level up
+                }
+            }
+        }
+        private void levelUp() {
+            level++;
+            baseAttack += 0.5;
+            criticalAttack += 2;
+            UltimateDamage += 10;
+            health += 10;
+            defense += 5;
+            System.out.println(name + " leveled up! Level: " + level);
+        }
         
 
         //Function that determine the damage based on character's passive attack range.
-    private int DetermineDamage(){
-        return passiveMinDamage + (int)(Math.random()*(passiveMaxDamage - passiveMinDamage)); //Randomizng the output damage of every character between min and max.
+    private int DetermineDamage(boolean isCriticalHit){
+        int baseDamage = (int)(baseAttack + passiveMinDamage + random.nextInt(passiveMaxDamage - passiveMinDamage)); //Randomizng the output damage of every character between min and max.
+        return isCriticalHit ? (int)(baseDamage + criticalAttack) : baseDamage;
     }
 
     //Function for inflicting damage and reducing character's health
