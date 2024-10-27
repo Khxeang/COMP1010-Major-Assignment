@@ -13,8 +13,8 @@ public class Game {
     public Scanner scanner;
 
     private int totalRounds = 3; //rounds to win the game
-    private int currentRounds = 0; //track current rounds
-    private int playerWins = 0;// track players total wins
+    private int heroWins = 0; //track current rounds
+    private int villianWins = 0;// track players total wins
 
 
     //Constructor for the Game class
@@ -119,7 +119,7 @@ public class Game {
         //Start Battle Round
         Team OpponentTeam = (selectedTeam == Heroes) ? Villians : Heroes;
         battleRound(PlayerTeam, OpponentTeam);
-    } 
+        }
 
     // Find a character in the selected team or Anti-Heroes based on user input.
         public Character CharacterInSelectedTeamAndAntiHeroes(String input) {
@@ -135,6 +135,7 @@ public class Game {
 
             return null; //When Character is not found
         }
+
 
         //Battle round between player's team and opponent team
         public void battleRound(ArrayList<Character> PlayerTeam, Team OpponentTeam){
