@@ -26,7 +26,16 @@ public class Character {
         this.UltimateDamage = UltimateDamage;
         this.ultimateAttackName = ultimateAttackName;
     }
-
+    //Method to increase Health
+    public void increaseHealth(int healthBoost) {
+        this.health += healthBoost;
+        System.out.println(this.name + " received a health boost of " + healthBoost + " points!");
+    }
+    // Method to increase damage
+    public void increaseDamage(int damageBoost) {
+        this.itemDamage += damageBoost;
+        System.out.println(this.name + " received a damage boost of " + damageBoost + " points!");
+    }
 
     // Method to attack another character
     public void attack(Character target) {
