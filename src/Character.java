@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Character {
     String name; //Name of the character.
     String type; //Character type (Hero, Villian, Anti-Hero)
@@ -7,12 +9,13 @@ public class Character {
     int passiveMaxDamage; //Character's maximum passive damage.
     int itemDamage; //Damage dealt by character's items.
     int UltimateDamage; //Damage dealt by character's ultimate attacks.
+    String ultimateAttackName; // Name of the ultimate attack
 
     public int ultimateCooldown = 3;
     public int ultimateCooldownTimer = 0;
 
     // Constructor for character initialization
-    public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage) {
+    public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage, String ultimateAttackName,Item Item) {
         this.name = name;
         this.type = type;
         this.health = health;
@@ -21,7 +24,9 @@ public class Character {
         this.passiveMaxDamage = passiveMaxDamage;
         this.itemDamage = itemDamage;
         this.UltimateDamage = UltimateDamage;
+        this.ultimateAttackName = ultimateAttackName;
     }
+
 
     // Method to attack another character
     public void attack(Character target) {
@@ -34,7 +39,7 @@ public class Character {
     public void useUltimate(Character target){
         if(ultimateCooldownTimer == 0){
             target.TakeDamage(UltimateDamage);
-            System.out.println(this.name + "used their ultimate on" + target.getName()+ "and dealth" + UltimateDamage + "damage!");
+            System.out.println(this.name + "used" + this.ultimateAttackName + "on" + target.getName()+ "and dealth" + UltimateDamage + "damage!");
             ultimateCooldownTimer = ultimateCooldown;
         } else {
             System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");
@@ -46,8 +51,9 @@ public class Character {
             }
         }
         //item needs to go here
+        
 
-    //Function that determine the damage based on character's passive attack range.
+        //Function that determine the damage based on character's passive attack range.
     private int DetermineDamage(){
         return passiveMinDamage + (int)(Math.random()*(passiveMaxDamage - passiveMinDamage)); //Randomizng the output damage of every character between min and max.
     }
