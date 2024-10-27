@@ -3,8 +3,9 @@ Bachelor Of IT Majoring In Software Tech |
 COMP1010 Fundamentals of Computer Science |
 MCU Arena Text-Based Fighting Game With Marvel Characters
 
+
 ## Description:
-This is a text-based fighting game that revolves around the Marvel Cinematic Universe characters, including the franchise characters and villains, they will have their items and abilities. The characters will be split into 2 teams: the heroes and the villains. But we will have 3 different types of characters, the Heroes, the Anti-Heroes, and the Villains, the only twist here is that Anti-heroes can be both on the Heroes team or the Villain team.
+This is a text-based fighting game following the guide of Topic 1 detailed in the assignemnt. However this game revolves around the Marvel Cinematic Universe characters, including the franchise characters and villains, they will have their items and abilities. The characters will be split into 2 teams: the heroes and the villains. But we will have 3 different types of characters, the Heroes, the Anti-Heroes, and the Villains, the only twist here is that Anti-heroes can be both on the Heroes team or the Villain team. The aim of the game is to battle against the opposing team and win the most amount of rounds.
 
 ## How To Run the Program, How it works:
 This game will start with a main menu that has 2 options. The user can pick between Play and Quit, type the number correlating to each choice and enter. Picking quit will terminate the program. Picking Play will direct the user to another menu that has more options to pick from. In order to start the game the user will have to pick to join between the 2 teams, they can either join the Heroes Team or the Villian Team, but before they pick any of these 2 options they have another option to inspect the teams "View Teams". This will show the user the team lists and the characters. Once the user picks the team they want to be in they can pick 3 characters from the list to be on their team. To choose each character to be placed on their team they must type the characters name and enter. do this for three characters (will be specified in the code)
@@ -23,4 +24,11 @@ All characters' passive attacks will increase with their level, each level plus 
 All characters’ ultimate attacks will increase with their level as well, plus 10 damage to their ultimate attack every time they level up.
 
 All character’s defense and health will increase with their level. Each time they level up plus 10 to their health and 5 to their defense.
+
+## Group and Contributions:
+Kheang 48155888(33.33%) : In charge of version 1.0 of the proejct which includes:+ Documentations + Class designs+ Base Code + Game Logics Code+ Game Planner + Project Manager+ Main Menu Base code+ Basic Errors Hanndling code+ Team and Characters base code+ In-Game Team Selection code+ In-Game Character Selection code+ Starter In-Game Battle Implementation code
+
+Iain 48270202 (33.33%) : In charge of version 2.0 of the project which includes:+ Final implementation of in-game battles+ Final Main Menu implementations+ UI design+ Ultimate ability implementation code + Character Item base code 
+
+Alan (0%) : N/A
 
