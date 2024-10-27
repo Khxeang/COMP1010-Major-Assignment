@@ -68,14 +68,14 @@ public class Character {
     }
 
     attacksMade++; // Track the number of attacks for critical hit logic
-        System.out.println(this.name + "attacked" + target.getName() + "and dealt" + damage + "damage!"); //Make announcement of the attack.
+        System.out.println(this.name + " attacked " + target.getName() + " and dealt " + damage + " damage!"); //Make announcement of the attack.
     }
 
     //method to use the ultimate ability
     public void useUltimate(Character target){
         if(ultimateCooldownTimer == 0){
             target.TakeDamage(UltimateDamage);
-            System.out.println(this.name + "used" + this.ultimateAttackName + "on" + target.getName()+ "and dealth" + UltimateDamage + "damage!");
+            System.out.println(this.name + " used " + this.ultimateAttackName + " on " + target.getName()+ " and dealt " + UltimateDamage + "damage!");
             ultimateCooldownTimer = ultimateCooldown;
         } else {
             System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");
