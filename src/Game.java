@@ -20,8 +20,21 @@ public class Game {
         this.AntiHeroes = new Team("Team Anti-Hero"); //Anti-Hero Team.
         this.scanner = new Scanner(System.in); //Scanner for user's input.
 
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item Mjolnir = new Item("Mjolnir", 0, 50);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+        Item hulkBuster = new Item("Hulk Buster armor", 50, 0);
+
         //Adding characters into the Hero Team.
-         Heroes.AddCharacter(new Heroes("Iron Man", 350, 300, 12, 18, 100, 150));
+         Heroes.AddCharacter(new Heroes("Iron Man", 350, 300, 12, 18, 100, 150,hulkBuster ));
          Heroes.AddCharacter(new Heroes("Captain America", 250, 250, 8, 15, 0, 250));
          Heroes.AddCharacter(new Heroes("Spider-Man", 200, 100, 6, 10, 0, 200));
          Heroes.AddCharacter(new Heroes("Thor", 500, 150, 15, 20, 300, 250));
@@ -129,6 +142,11 @@ public class Game {
 
                 System.out.println("\n" + PlayerCharacter.getName() + " (Player) VS " + OpponentCharacter.getName() + " (Opponent)");
 
+
+                // new choice code
+
+
+
                 //check if ultimate can be used
                 if(PlayerCharacter.ultimateCooldownTimer == 0){
                     PlayerCharacter.useUltimate(OpponentCharacter); // use ultimate
@@ -136,24 +154,18 @@ public class Game {
                 } else {
                     //use basic attack
                     PlayerCharacter.attack(OpponentCharacter);
-                    PlayerCharacter.
+                    PlayerCharacter.ultimateCooldownTimer--;//reduce cooldown
                 }
-
-
-
-
-                PlayerCharacter.attack(OpponentCharacter);
+                //check if oppenent character is defeated
                 if(!OpponentCharacter.isAlive()){
-                    System.out.println((OpponentCharacter.getName() + " has been defeated!"));
+                    System.out.println(OpponentCharacter.getName() + " has been defeated!");
                 } else {
+                    // Opponent attacks back if still alive
                     OpponentCharacter.attack(PlayerCharacter);
-                    if(!PlayerCharacter.isAlive()){
+                    if (!PlayerCharacter.isAlive()) {
                         System.out.println(PlayerCharacter.getName() + " has been defeated!");
                     }
                 }
+                }
             }
         }
-
-
-        
-    }
