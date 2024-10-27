@@ -123,7 +123,7 @@ public class Character {
         return this.health > 0;
     }
 
-    //Functions to retrieve the name, health, and the defense points of the character.
+    //Functions to retrieve the name, health, the defense points, and type of the character.
     public String getName(){
         return name;
     }
@@ -143,12 +143,13 @@ public class Character {
     public int getAttack(){
         return baseAttack;
     }
+
     public int getUltimate() {
-        return ultimateDamage;
+        return UltimateDamage;
     }
 
+    // Getter for item damage
     public int getItem() {
         return itemDamage;
     }
-
 }
