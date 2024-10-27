@@ -1,5 +1,6 @@
 public class Character {
     String name; //Name of the character.
+    String type; //Character type (Hero, Villian, Anti-Hero)
     int health; //Character's health points.
     int defense; //Character's defense points.
     int passiveMinDamage; //Character's minimum passive damage. 
@@ -7,10 +8,13 @@ public class Character {
     int itemDamage; //Damage dealt by character's items.
     int UltimateDamage; //Damage dealt by character's ultimate attacks.
 
+    public int ultimateCooldown = 3;
+    public int ultimateCooldownTimer = 0;
 
     // Constructor for character initialization
     public Character(String name, int health, int defense, int passiveMinDamage, int passiveMaxDamage, int itemDamage, int UltimateDamage) {
         this.name = name;
+        this.type = type;
         this.health = health;
         this.defense = defense;
         this.passiveMinDamage = passiveMinDamage;
@@ -25,6 +29,23 @@ public class Character {
         target.TakeDamage(damage); //Inflict damage upon the target.
         System.out.println(this.name + "attacked" + target.getName() + "and dealt" + damage + "damage!"); //Make announcement of the attack.
     }
+
+    //method to use the ultimate ability
+    public void useUltimate(Character target){
+        if(ultimateCooldownTimer == 0){
+            target.TakeDamage(UltimateDamage);
+            System.out.println(this.name + "used their ultimate on" + target.getName()+ "and dealth" + UltimateDamage + "damage!");
+            ultimateCooldownTimer = ultimateCooldown;
+        } else {
+            System.out.println(this.name + "'s ultimate is on cooldown for " + ultimateCooldownTimer + " more turns.");
+            }
+        }
+        public void reduceCooldown() {
+            if (ultimateCooldownTimer > 0) {
+                ultimateCooldownTimer--;
+            }
+        }
+        //item needs to go here
 
     //Function that determine the damage based on character's passive attack range.
     private int DetermineDamage(){
