@@ -1,6 +1,6 @@
 import java.util.Scanner; //Importing the scanner class to take in user's input.
 import java.util.ArrayList; //Importing ArrayList to manage lists of different characters.
-import java.util.Random; //Importing random to help randomize character selections during the game.
+import java.util.Random; //Importing random to help randomize character and action selections during the game.
 
 
 public class Game {
@@ -140,7 +140,7 @@ public class Game {
         //Battle round between player's team and opponent team
         public void battleRound(ArrayList<Character> PlayerTeam, Team OpponentTeam){
             System.out.println("\nStarting the battle between your team and " + OpponentTeam.getTeamname());
-
+            Random randaction = new Random();
 
             for(Character PlayerCharacter : PlayerTeam){
                 Character OpponentCharacter = OpponentTeam.GetRandomCharacter();
@@ -173,12 +173,24 @@ public class Game {
                             continue;
                     }
  
-                }                 
+                } else if (choice.equalsIgnoreCase("Ulitmate Attack") || choice.equalsIgnoreCase("use ultimate attack") || choice.equalsIgnoreCase("3")){
+                    //Use item to attack if available
+                    if(PlayerCharacter.ultimateCooldownTimer == 0){
+                        PlayerCharacter.useItem(OpponentCharacter);
+                        PlayerCharacter.ultimateCooldownTimer = PlayerCharacter.itemCooldown; //Reset item cooldown
+                        System.out.println(PlayerCharacter.getName() + " used an ultimate on " + OpponentCharacter.getName() + "!");
+                    } else{
+                        System.out.println("Ultimate is on cooldown. Turns remaining: " + PlayerCharacter.ultimateCooldownTimer);
+                        continue;
+                    }
+                }
+                
+                
                 else {
                     System.out.println("Invalid choice. Please select 1, 2, 3, or 4");
                     continue; //Will keep the game running
                 }
-
+            }
                 // Check if opponent is defeated
                 if(!OpponentCharacter.isAlive()){
                     System.out.println(OpponentCharacter.getName() + " has been defeated!");
@@ -194,7 +206,7 @@ public class Game {
                 // Opponent's turn to attack if they are still alive
                 if(OpponentCharacter.isAlive()){
                     //Randomize opponent's action between basic attack, item. or ultimate with the same cooldown logic)
-                    int OpponentChoice = random.nextInt(3);
+                    int OpponentChoice = randaction.nextInt(3);
                     if(OpponentChoice == 0){
                         OpponentCharacter.attack(PlayerCharacter);
                         System.out.println(OpponentCharacter.getName() + " attacked " + PlayerCharacter.getName() + "with a baisc attack.");
@@ -276,4 +288,3 @@ public class Game {
                     }
                 }
         }
-    }
