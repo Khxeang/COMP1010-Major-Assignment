@@ -5,30 +5,25 @@ public class MainMenu {
 
     public static void main(String[]args){
         Scanner scanner = new Scanner(System.in);
-        Game game = new Game(); // Initialize the Game class to handle game setup and gameplay
-
-        System.out.println("======================================");
-        System.out.println("            MCU Arena                ");
-        System.out.println("======================================");
-
+        Game game = new Game(); // Initialize the Game class 
 
         while (true) {
             System.out.println("\n==== Main Menu ====");
             System.out.println("1. Play");
             System.out.println("2. Quit");
             System.out.print("Enter your choice: ");
-            
-            String userInput = scanner.nextLine();
+            int choice = scanner.nextInt();
 
-           if (userInput.equalsIgnoreCase("Quit") || userInput.equalsIgnoreCase("2")) {
+            if (choice == 2) {
                 System.out.println("Thanks for playing!");
                 break;
-           } else if (userInput.equalsIgnoreCase("Play") || userInput.equalsIgnoreCase("1")){
-                game.StartGame();
-           } else {
-                System.out.println("Invalid choice! Please try again.");
-           }
+            } else if (choice == 1) {
+                game.StartGame();// Begin the game when "Play" is selected
+            } else {
+                System.out.println("Invalid choice! Please try again."); // Handle invalid input
+            }
         }
+        scanner.close();
     }
 }
 
