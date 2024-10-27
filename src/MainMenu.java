@@ -12,7 +12,7 @@ public class MainMenu {
             System.out.println("1. Play");
             System.out.println("2. Quit");
             System.out.print("Enter your choice: ");
-            String choice = scanner.nextLine()
+            String choice = scanner.nextLine();
 
             if (choice.equalsIgnoreCase("Quit") || choice.equalsIgnoreCase("2")) {
                 System.out.println("Thanks for playing!");
